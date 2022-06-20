@@ -5,13 +5,7 @@ exports[`PhotoList is rendering renders the snapshot 1`] = `
   <div>
     <div
       class="flex-row"
-    >
-      <h1
-        data-testid="here"
-      >
-        hello
-      </h1>
-    </div>
+    />
   </div>
 </DocumentFragment>
 `;

@@ -115,7 +115,6 @@ const PhotoList = ({ category }) => { //with this, we will have access to the se
             key={image.name}
           />
         ))}
-        <h1 data-testid="here">hello</h1>
       </div>
     </div>
   );
