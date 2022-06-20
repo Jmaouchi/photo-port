@@ -111,6 +111,8 @@ const PhotoList = ({ category }) => { //with this, we will have access to the se
   const toggleModal = (image, i) => {
     setCurrentPhoto({...image, index: i}) // this will see what image it will display on the page by the indedx and the image 
     setIsModalOpen(!isModalOpen); // this will change the state of the isModelOpen from false to true 
+    // everytime we call this function i will chnage the state from what it was to the opposite, and that is with using the !isModalOpen meaning 
+    // that it will check the current status of that isModalOpen and it will switch it to the opposite
   }
 
   return (

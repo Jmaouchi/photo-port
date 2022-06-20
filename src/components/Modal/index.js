@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 
 function Modal({currentPhoto, onClose}) {
   const {name, category, description, index} = currentPhoto;
