@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Modal from '../Modal';
 
 const PhotoList = ({ category }) => { //with this, we will have access to the selected category (name and description)
 
@@ -99,19 +100,32 @@ const PhotoList = ({ category }) => { //with this, we will have access to the se
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
     },
   ]);
-  // this will filter the array and return only the photos that has tha same category name 
+
+  // this will filter the array and return only the photos that has the same category name 
   const currentPhotos = photos.filter((photo) => photo.category === category);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  // hooks to manage the images 
+  const [currentPhoto, setCurrentPhoto] = useState();
+
+  const toggleModal = (image, i) => {
+    setCurrentPhoto({...image, index: i}) // this will see what image it will display on the page by the indedx and the image 
+    setIsModalOpen(!isModalOpen); // this will change the state of the isModelOpen from false to true 
+  }
 
   return (
     <div>
+      {/* only render the modal if the isModalOpen value is true */}
+      {isModalOpen && <Modal currentPhoto={currentPhoto} onClose={toggleModal}/>}
       <div className="flex-row">
         {/* then with this map function we will return every single photo on that array 
         with knowing that the currentPhotos is the new array we got after the filter method*/}
-        {currentPhotos.map((image, i) => ( // the i is the index and we are adding a key 
+        {currentPhotos.map((image, i) => ( // the i is the index, it will helo to get the images by the number and we are adding a key since its a map
           <img
             src={require(`../../assets/small/${category}/${i}.jpg`)}
             alt={image.name}
             className="img-thumbnail mx-1"
+            onClick={() => toggleModal(image, i)}
             key={image.name}
           />
         ))}
